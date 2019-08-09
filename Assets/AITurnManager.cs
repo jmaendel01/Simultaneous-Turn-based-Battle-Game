@@ -57,5 +57,7 @@ public class AITurnManager : MonoBehaviour
                 BattleManagerScript.instance.setAction(currentMove);
             }
         }
+
+        //Debug.Log(playerScript.getPlayerName() + " submitted " + (int)currentMove.getActionType());
     }
 }

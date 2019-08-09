@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
 
     public bool isPlayer;
 
-    public static readonly int maxHealth = 20;
+    public static readonly int maxHealth = 15;
     private int health;
     public int getHealth()
     {

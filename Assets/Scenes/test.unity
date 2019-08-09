@@ -565,9 +565,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0db73133aa838814fb7e418f65d65755, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 7835855616831902942, guid: 256214058939f4c4983cde16ee9d1377,
+  playerPrefab: {fileID: 6087761729168509240, guid: fdea18819cb427745ab426a1d6de5506,
     type: 3}
-  AIPrefab: {fileID: 8028016628057375016, guid: b8dc7a4aa300a764a9b8070f0b50d689,
+  AIPrefab: {fileID: 2582536807745281461, guid: cd0e23ec8ec06e94cbe8289530f25654,
     type: 3}
   PLAYER_COUNT: 4
 --- !u!4 &1123193728

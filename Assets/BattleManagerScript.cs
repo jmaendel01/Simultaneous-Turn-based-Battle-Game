@@ -10,7 +10,7 @@ public class BattleManagerScript : MonoBehaviour
     [SerializeField] public int PLAYER_COUNT;
 
     public static BattleManagerScript instance;
-    public readonly float TURN_TIME = 5.0f;
+    public readonly float TURN_TIME = 15f;
 
     public static Text instructionText;
 
@@ -27,6 +27,14 @@ public class BattleManagerScript : MonoBehaviour
     public GameObject getPlayerByName(string playerName)
     {
         GameObject player = players.Find(x => x.GetComponent<Player>().getPlayerName() == playerName);
+
+        if (player == null)
+        {
+            Debug.Log(playerName + " not found");
+        }
+        
+
+
         return player;
     }
 
@@ -70,10 +78,11 @@ public class BattleManagerScript : MonoBehaviour
                 }
             }
 
-            if (!submittedActions.Exists(x => x.sender == player))
+            if (!submittedActions.Exists(x => x.sender == player.GetComponent<Player>()))
             {
                 IActionCommand genericDefendCommand = new IActionCommand(IActionCommand.ActionType.DEFEND, player.GetComponent<Player>());
                 submittedActions.Add(genericDefendCommand);
+                Debug.Log("DEFEND (0) added for " + player.GetComponent<Player>().getPlayerName());
             }
         }
 
@@ -83,6 +92,7 @@ public class BattleManagerScript : MonoBehaviour
         // Execute all the moves for the turn
         foreach (IActionCommand action in submittedActions)
         {
+            Debug.Log(action.sender.getPlayerName() + " Action: " + (int)action.getActionType());
             Text actionText = action.sender.GetComponentsInChildren<Text>()[2];
 
             if (action.getActionType() == IActionCommand.ActionType.DEFEND)
@@ -126,9 +136,15 @@ public class BattleManagerScript : MonoBehaviour
 
         // Starts next turn
         if (newTurn != null && getPlayersLeft() > 1)
+        {
             newTurn();
+        }
         else
+        {
+            timer.restartTimer();
+            timer.stopTimer();
             instructionText.text = "Game over. ";
+        }
     }
 
     private void quickAttack(Player sender)

@@ -24,6 +24,11 @@ public class IActionCommand
         return actionType;
     }
 
+    public string getActionTypeString()
+    {
+        return "enum";
+    }
+
     public readonly Player target;
     public readonly Player sender;
 

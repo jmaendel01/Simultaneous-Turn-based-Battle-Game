@@ -61,11 +61,11 @@ public class InputManager : MonoBehaviour
             else
             {
                 // Checks each number to
-                for (int i = 0; i < BattleManagerScript.instance.PLAYER_COUNT; i++)
+                for (int i = 0; i < BattleManagerScript.instance.getPlayersLeft(); i++)
                 {
                     if (Input.GetKeyDown(i.ToString()))
                     {
-                        Player targetPlayer = BattleManagerScript.instance.getPlayerByName("Player " + i).GetComponent<Player>();
+                        Player targetPlayer = BattleManagerScript.instance.getPlayerByNumber(i).GetComponent<Player>();
 
                         if (targetPlayer != null && !targetPlayer.Equals(playerScript))
                         {
